@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./styles.css" />
+
+    <title>Challenge Alura</title>
+  </head>
+  <body>
+    <img id="logoAlura" src="./logoAlura.svg" alt="Logo Alura Latam" />
+    <main>
+      <div class="inputContainer">
+        <textarea
+          name="textArea"
+          id="textArea"
+          class="textArea"
+          cols="1"
+          rows="1"
+          placeholder="Ingrese el texto aquí"
+        ></textarea>
+
+        <div class="condicion">
+          <p><span>!</span>Solo letras minusculas y acentos</p>
+        </div>
+
+        <!-- botones para encriptar y desencriptar texto -->
+        <div class="buttonContainer">
+          <button class="buttonEncriptar button" onclick="encriptar()">
+            Encriptar
+          </button>
+          <button class="buttonDesencriptar button" onclick="desencriptar()">
+            Desencriptar
+          </button>
+        </div>
+      </div>
+
+      <!-- div invisible para cargar el texto encriptado o desencriptado cuando se presiona el boton -->
+      <div class="invisibleTextDiv">
+        <p class="invisibleText"></p>
+        <input
+          type="button"
+          value="copiar"
+          class="buttonCopy"
+          onclick="copiarResultado()"
+        />
+      </div>
+
+      <!-- div de texto no encontrado -->
+      <div class="textNotFoundBox">
+        <img src="./muñeco.svg" alt="Mensaje no encontrado" />
+        <h3>Ningun mensaje fue encontrado</h3>
+        <p>Ingrese el mensaje que desea encriptar o desencriptar</p>
+      </div>
+    </main>
+
+    <footer>
+      <p>By Augusto Sebastian Gonzale front-end developer</p>
+    </footer>
+
+    <script>
+      const toRender = (text) => {
+        if (text !== "") {
+          document.querySelector(".invisibleText").innerText = text;
+          document.querySelector(".textNotFoundBox").style.display = "none";
+          document.querySelector(".invisibleTextDiv").style.display = "flex";
+        } else {
+          document.querySelector(".textNotFoundBox").style.display = "flex";
+          document.querySelector(".invisibleTextDiv").style.display = "none";
+        }
+      };
+
+      const encriptar = () => {
+        const text = document.querySelector(".textArea").value;
+
+        let encryptedText = "";
+
+        for (const character of text) {
+          switch (character) {
+            case "a":
+              encryptedText += "ai";
+              break;
+            case "e":
+              encryptedText += "enter";
+              break;
+            case "i":
+              encryptedText += "imes";
+              break;
+            case "o":
+              encryptedText += "ober";
+              break;
+            case "u":
+              encryptedText += "ufat";
+              break;
+
+            default:
+              encryptedText += character;
+              break;
+          }
+        }
+
+        toRender(encryptedText.trim()); // Elimina los espacios en blanco
+      };
+
+      const desencriptar = () => {
+        const text = document.querySelector(".textArea").value;
+
+        let decryptedText = "";
+
+        decryptedText = text
+          .replaceAll("ai", "a")
+          .replaceAll("enter", "e")
+          .replaceAll("imes", "i")
+          .replaceAll("ober", "o")
+          .replaceAll("ufat", "u");
+
+        toRender(decryptedText.trim());
+      };
+
+      const copiarResultado = () => {
+        navigator.clipboard.writeText(
+          document.querySelector(".invisibleText").innerText
+        );
+      };
+    </script>
+  </body>
+</html>

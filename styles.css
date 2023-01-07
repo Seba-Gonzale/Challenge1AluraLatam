@@ -1,0 +1,239 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  font-family: "Inter";
+}
+body {
+  min-height: 100vh;
+
+  padding: 0 2rem;
+  background-color: #e5e5e5;
+}
+
+#logoAlura {
+  position: absolute;
+  top: 2rem;
+}
+
+main {
+  padding: 2rem 0;
+  height: 100vh;
+  display: flex;
+}
+/* Area de excritura */
+.inputContainer {
+  flex: 1 0 auto;
+
+  --marginUp: 3rem;
+  margin: var(--marginUp) 15% 0 15%;
+
+  display: flex;
+  flex-flow: column nowrap;
+}
+.textArea {
+  flex: 1 1 auto;
+  background-color: #e5e5e5;
+  border: none;
+  resize: none;
+
+  font-size: 2rem;
+  color: #0a3871;
+}
+.textArea:focus {
+  outline: none;
+}
+.textArea::placeholder {
+  color: #0a3871;
+}
+
+/* Alerta de tipos de letras a usar */
+.condicion p span {
+  padding: 0.1rem 0.5rem 0.1rem 0.5rem;
+  margin-right: 1rem;
+  background-color: #495057;
+  color: #fff;
+  border-radius: 50%;
+}
+.condicion p {
+  margin: 1rem 0 1rem 0;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+/* Botones */
+.buttonContainer {
+  display: flex;
+  gap: 1.5rem;
+}
+.button {
+  height: 4rem;
+  border-radius: 24px;
+  box-shadow: 0 5px 5px 0 rgba(128, 128, 128, 0.534);
+
+  flex: 0 1 20rem;
+}
+.buttonEncriptar {
+  color: #fff;
+  background: #0a3871;
+  border: none;
+  outline: none;
+}
+.buttonDesencriptar {
+  color: #0a3871;
+  background: #d8dfe8;
+  border: 1px solid #0a3871;
+  outline: none;
+}
+.button:hover {
+  cursor: pointer;
+}
+.button:active {
+  box-shadow: none;
+}
+
+.invisibleTextDiv {
+  display: none;
+  height: 100%;
+  width: 400px;
+
+  padding: 2rem;
+  background-color: #fff;
+  box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
+  border-radius: 32px;
+  /* overflow: scroll; */
+
+  flex: 0 1 400px;
+
+  flex-flow: column;
+  gap: 10px;
+  word-wrap: break-word;
+}
+.invisibleText {
+  font-size: 1.5rem;
+  flex: 1 0 80%;
+  overflow: scroll;
+  word-wrap: break-word;
+}
+.buttonCopy {
+  /* width: 336px; */
+  margin: 1rem 10%;
+  min-height: 67px;
+  color: #0a3871;
+  border: 1px solid #0a3871;
+  border-radius: 24px;
+  cursor: pointer;
+
+  align-self: stretch;
+}
+
+.textNotFoundBox {
+  padding: 2rem;
+  background-color: #fff;
+  box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
+  border-radius: 32px;
+  overflow: auto;
+
+  flex: 0 1 400px;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.textNotFoundBox img {
+  width: 100%;
+  object-fit: contain;
+}
+.textNotFoundBox h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 120%;
+  color: #343a40;
+}
+.textNotFoundBox p {
+  margin-top: 1rem;
+  line-height: 150%;
+  color: #495057;
+}
+
+footer {
+  width: 100%;
+  background-color: #0a3871;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+footer > p {
+  color: #fff;
+  padding: 0.3rem 0;
+  font-size: 10px;
+  text-align: center;
+}
+
+/*  */
+/* ---------------- Media Query */
+/*  */
+
+/* Escritorio pequeño / tablet */
+@media screen and (min-width: 576px) and (max-width: 991px) {
+  main {
+    flex-flow: column nowrap;
+    /* height: auto; */
+  }
+  .inputContainer {
+    --marginUp: 5rem;
+    margin: var(--marginUp) 0 0 0;
+    flex-basis: 500px;
+  }
+  .buttonContainer {
+    justify-content: center;
+  }
+  .invisibleTextDiv {
+    margin: 1rem 0 1rem;
+    width: 100%;
+    max-height: 100vh;
+  }
+  .textNotFoundBox {
+    flex-basis: max-content;
+    margin: 1rem 0 1rem 0;
+  }
+  .textNotFoundBox img {
+    width: auto;
+  }
+}
+
+/* Teléfonos */
+@media only screen and (max-width: 575px) {
+  main {
+    flex-flow: column nowrap;
+    height: auto;
+  }
+  .inputContainer {
+    --marginUp: 5rem;
+    margin: var(--marginUp) 0 0 0;
+    flex-basis: 400px;
+  }
+  .buttonContainer {
+    display: block;
+  }
+  .button {
+    width: 100%;
+    margin: 1rem 0;
+  }
+  .invisibleTextDiv {
+    margin: 1rem 0 1rem;
+    width: 100%;
+    max-height: 100vh;
+  }
+  .textNotFoundBox {
+    flex-basis: max-content;
+    margin: 1rem 0 1rem 0;
+  }
+  .textNotFoundBox img {
+    display: none;
+  }
+}
